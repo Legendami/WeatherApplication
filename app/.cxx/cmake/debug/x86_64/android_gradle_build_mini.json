@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/damianopatane/Library/Android/sdk/ndk/21.0.6113669/build/cmake/platforms.cmake",
+    "/Users/damianopatane/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
+    "/Users/damianopatane/WeatherApplication/app/src/main/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/damianopatane/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/damianopatane/WeatherApplication/app/.cxx/cmake/debug/x86_64\" clean"
+  ],
+  "buildTargetsCommand": "/Users/damianopatane/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/damianopatane/WeatherApplication/app/.cxx/cmake/debug/x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "native-lib-Debug-x86_64": {
+      "artifactName": "native-lib",
+      "buildCommand": "/Users/damianopatane/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/damianopatane/WeatherApplication/app/.cxx/cmake/debug/x86_64\" native-lib",
+      "abi": "x86_64",
+      "output": "/Users/damianopatane/WeatherApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so",
+      "runtimeFiles": []
+    }
+  }
+}

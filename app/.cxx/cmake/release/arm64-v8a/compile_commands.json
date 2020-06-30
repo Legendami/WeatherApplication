@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/damianopatane/WeatherApplication/app/.cxx/cmake/release/arm64-v8a",
+  "command": "/Users/damianopatane/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --gcc-toolchain=/Users/damianopatane/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/damianopatane/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I/Users/damianopatane/WeatherApplication/app/src/main/src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/cpp/libnative-lib.cpp.o -c /Users/damianopatane/WeatherApplication/app/src/main/cpp/libnative-lib.cpp",
+  "file": "/Users/damianopatane/WeatherApplication/app/src/main/cpp/libnative-lib.cpp"
+}
+]

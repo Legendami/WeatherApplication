@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.damianopatane.weatherapplication.ui.activities.CityListActivity">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="cityListViewModel"
+            type="com.damianopatane.weatherapplication.ui.viewmodels.CityListViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipecontainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefresh="@{() -> cityListViewModel.refreshWeatherItems()}">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/city_recyclerview"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="vertical"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cities="@{cityListViewModel.cityItems}"
+                tools:listitem="@layout/city_item"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherApplication</string>
+    <string name="cities">Cities</string>
+    <string name="file_provider_authority" translatable="false">com.damianopatane.readasset.fileprovider</string>
+</resources>

@@ -1,0 +1,3 @@
+/Users/damianopatane/WeatherApplication/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/damianopatane/WeatherApplication/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/damianopatane/WeatherApplication/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/native-lib.dir

@@ -1,0 +1,9 @@
+# ninja log v5
+0	826	1593417814	CMakeFiles/native-lib.dir/cpp/libnative-lib.cpp.o	211dc902c2964077
+827	892	1593417814	/Users/damianopatane/WeatherApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	63f04cfe0de1130a
+0	7	0	clean	3d9b8c203b85c5c0
+1	418	1593430770	CMakeFiles/native-lib.dir/cpp/libnative-lib.cpp.o	211dc902c2964077
+418	490	1593430770	/Users/damianopatane/WeatherApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	63f04cfe0de1130a
+0	7	0	clean	3d9b8c203b85c5c0
+2	475	1593474539	CMakeFiles/native-lib.dir/cpp/libnative-lib.cpp.o	211dc902c2964077
+476	588	1593474539	/Users/damianopatane/WeatherApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	63f04cfe0de1130a
