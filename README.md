@@ -41,7 +41,7 @@ Free access to the OpenWeather Api does have some limitations:
 - No more then 60 calls per minute
 - No more then 1000 calls per day
 
-The app has the weather for the 40-50 capitals of Europe. This means that after loading the list with current weather per city, you should be able to click and check weather from each other city up to 60 calls within 1 minute. Which is sufficient for this usecase.
+The app has weather data for the 40-50 capitals of Europe. This means that after loading the list with current weather per city, you should be able to click and check weather from each other city up to 60 calls within 1 minute. Which is sufficient for this usecase.
 
 ### Security
 As a mobile developer, and especially on Android, developing with "security first" in mind is paramount. Even though the data being fetched in this app is not really sensitive data, i wanted to provide some basic security implementations. You want to keep your client as dumb as possible but at the same time, the security of your complete architecture stack will be just as strong as your weakest link. So i made sure to use the highest ciphersuite available from your server, checked through SSLlabs. I made sure to have a NetworkSecurityConfig that enforces SSL and i created a keystore implementation so we can encrypt the local Realm Database. This however still needs to be implemented in the future since i want to run on the higest NIST P-384 requirements available with caching and sharedpreferences. Take a peek in in the Security Folder for WIP.
