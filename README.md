@@ -49,7 +49,7 @@ As a mobile developer, and especially on Android, developing with "security firs
 ### User Experience
 I added some quality of life extra's like app-icons, splashscreen, cardviews and toast messages for whenever something goes wrong with error handling. Since the application needs data first, opening the app without any internet connection will prompt a message asking for a connection to get the first weather forecast. The UI has stock Android elements with a sharp black-white contrast and simple elegant cards.
 
-![citylist](/assets/CityList.png "City List"){:height="50%" width="50%"} ![cityweather](/assets/CityWeather.png "City Weather"){:height="50%" width="50%"}
+![citylist](/assets/CityList.png "City List")<!-- .element height="50%" width="50%" --> ![cityweather](/assets/CityWeather.png "City Weather")<!-- .element height="50%" width="50%" -->
 
 ## Things to do:
 - Continue updating and implementing preliminary security work from the security folder
