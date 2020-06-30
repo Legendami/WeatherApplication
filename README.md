@@ -1,4 +1,4 @@
-![](https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png)
+![](https://brands.home-assistant.io/_/openweathermap/logo.png)
 # Weather Application
 A simple offline-first weather application for android build with Kotlin, CleanMVVM Architecture, RxJava 2 and Dagger 2
 
@@ -17,11 +17,11 @@ A simple offline-first weather application for android build with Kotlin, CleanM
 The app a Weather App quite similar to how you would find them on Google Play or even on the App Store. It features the current, hourly and daily weather of each capital in Europe. 
 
 ### Architecture & pattern
-I chose to use an MVVM design pattern because i believe it is the best way to have a seperation of concerns and business logic within a app. The MVVM pattern presents a better separation of concerns with viewmodels. A viewmodel translates the data of the model layer into something the view layer can use. The controller is no longer responsible for this task. Proper MVVM assumes at least a moderately complex application, which deals with data from "somewhere". In this case it is both from local persistent no-sql Realm database or the provided server endpoint. I also am a personal fan of MVVM as i've been using it for some time in building Xamarin apps in the past with [MvvmCross](https://www.mvvmcross.com/)
+I chose to use an MVVM design pattern because i believe it is the best way to have a seperation of concerns and business logic within a app. The MVVM pattern presents a better separation of concerns with viewmodels. A viewmodel translates the data of the model layer into something the view layer can use. The controller is no longer responsible for this task. Proper MVVM assumes at least a moderately complex application, which deals with data from "somewhere". In this case it is both from local persistent no-sql Realm database or the OpenWeather API server endpoint. I also am a personal fan of MVVM as i've been using it for some time in building Xamarin apps with [MvvmCross](https://www.mvvmcross.com/)
 
 ![](https://josipsalkovic.com/wp-content/uploads/2019/12/mvvm_architecture.png)
 
-Initially this meant having a remote datasource and a local datasource. And so i used a traditional [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) approach. The goals of clean architecture is to provide a way to organize code in a way that it encapsulates the business logic but keeps it separate from the delivery mechanisms. Though traditionally in Java you would use callbacks, once the clean architecture was implemented within Kotlin, i moved over to using LiveData, injecting dependencies with Dagger and handling observables with RxJava.
+Initially this meant having a remote datasource and a local datasource. And so i used a traditional [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) approach. The goals of clean architecture is to provide a way to organize code in a way that it encapsulates the business logic but keeps it separate from the delivery mechanisms. Though traditionally in Java you would use callbacks, once the clean architecture was implemented within Kotlin, i moved over to combining that with LiveData, injecting dependencies with Dagger and handling observables with RxJava.
 
 The app has some different approaches for doing the same things. Sometimes it uses @inject to inject dependencies, other times the app uses modules that @provides those and other times it uses simple Companion Objects. This is intentional, as to showcase how all roads can lead to Rome.
 
@@ -52,7 +52,7 @@ I added some quality of life extra's like app-icons, splashscreen, cardviews and
 ![citylist](/assets/CityList.png "City List")<!-- .element height="25%" width="25%" --> ![cityweather](/assets/CityWeather.png "City Weather")<!-- .element height="25%" width="25%" -->
 
 ## Things to do:
-- Continue updating and implementing preliminary security work from the security folder
+- Continue updating and implementing preliminary security work
 - Seperate retrofit calls with reactive single usecases and handle those with seperate callbacks
 - Make all weather icons from the API available offline for consistency
-- Maybe add a nice picture from the Google Search Api from each City as a gradient background
+- Add a nice picture from the Google Search Api from each City as a gradient background
