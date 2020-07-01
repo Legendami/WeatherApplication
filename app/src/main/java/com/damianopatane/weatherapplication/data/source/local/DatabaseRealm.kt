@@ -29,7 +29,6 @@ class DatabaseRealm(private val gson : Gson,
     fun getWeatherEntries() : List<CityDao>
     {
         try {
-            // Use doOnUnsubscribe
             realm = Realm.getDefaultInstance()
             return realm.where<CityDao>().findAll().toList<CityDao>()
         } catch (t : Throwable ) {
