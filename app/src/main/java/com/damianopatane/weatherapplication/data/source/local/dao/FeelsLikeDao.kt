@@ -5,7 +5,7 @@ import io.realm.RealmObject
 import io.realm.annotations.RealmClass
 
 @RealmClass
-open class Feels_likeDao(
+open class FeelsLikeDao(
     @SerializedName("day") var day : Double? = null,
     @SerializedName("night") var night : Double? = null,
     @SerializedName("eve") var eve : Double? = null,

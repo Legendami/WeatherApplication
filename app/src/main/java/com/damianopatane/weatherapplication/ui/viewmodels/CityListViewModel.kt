@@ -36,8 +36,4 @@ class CityListViewModel @Inject constructor(private val getCities: GetCitiesUseC
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        // dispose possible realm threads in the future, for now it is closed from CityListActivity
-    }
 }

@@ -3,6 +3,6 @@ package com.damianopatane.weatherapplication.domain.model
 import java.io.Serializable
 
 data class CoordVal(
-    var lon : Double,
-    var lat : Double
+    var lon : Double?,
+    var lat : Double?
 ) : Serializable

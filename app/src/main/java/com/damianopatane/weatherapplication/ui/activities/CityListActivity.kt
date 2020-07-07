@@ -8,33 +8,31 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.damianopatane.weatherapplication.R
-import com.damianopatane.weatherapplication.app.WeatherApplication.Companion.closeRealm
 import com.damianopatane.weatherapplication.databinding.ActivityCitiesBinding
 import com.damianopatane.weatherapplication.domain.model.CityItem
 import com.damianopatane.weatherapplication.ui.adapters.CityItemListener
 import com.damianopatane.weatherapplication.ui.adapters.CityListAdapter
 import com.damianopatane.weatherapplication.ui.viewmodels.CityListViewModel
 import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_cities.*
 import java.io.Serializable
 import javax.inject.Inject
 
 
-class CityListActivity : DaggerAppCompatActivity() {
+class CityListActivity : BaseActivity() {
 
-    private val TAG = CityListViewModel::class.java.name
+    private val tag = CityListViewModel::class.java.name
     private lateinit var activityCitiesBinding : ActivityCitiesBinding
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel : CityListViewModel by lazy  {
+    private val viewModel : CityListViewModel by lazy  {
         ViewModelProvider(this, viewModelFactory).get(CityListViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
@@ -48,8 +46,8 @@ class CityListActivity : DaggerAppCompatActivity() {
         initRecycler(cityListAdapter)
         initObservers()
 
-        getSupportActionBar()?.setDisplayOptions(DISPLAY_SHOW_CUSTOM)
-        getSupportActionBar()?.setCustomView(R.layout.actionbar)
+        supportActionBar?.displayOptions = DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.actionbar)
     }
 
     private fun initRecycler(cityListAdapter : CityListAdapter) {
@@ -84,10 +82,5 @@ class CityListActivity : DaggerAppCompatActivity() {
                 startActivity(intent)
             })
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        closeRealm()
     }
 }

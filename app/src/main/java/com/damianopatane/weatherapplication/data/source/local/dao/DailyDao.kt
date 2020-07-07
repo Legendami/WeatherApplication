@@ -11,7 +11,7 @@ open class DailyDao (
     @SerializedName("sunrise") var sunrise : Int? = 0,
     @SerializedName("sunset") var sunset : Int? = 0,
     @SerializedName("temp") var temp : TempDao? = null,
-    @SerializedName("feels_like") var feels_like : Feels_likeDao? = null,
+    @SerializedName("feels_like") var feels_like : FeelsLikeDao? = null,
     @SerializedName("pressure") var pressure : Int? = 0,
     @SerializedName("humidity") var humidity : Int? = 0,
     @SerializedName("dew_point") var dew_point : Double? = null,

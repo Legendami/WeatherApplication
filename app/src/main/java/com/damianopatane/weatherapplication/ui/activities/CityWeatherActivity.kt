@@ -1,36 +1,29 @@
 package com.damianopatane.weatherapplication.ui.activities
 
-import android.os.Build
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
-import android.view.animation.DecelerateInterpolator
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.damianopatane.weatherapplication.R
-import com.damianopatane.weatherapplication.app.WeatherApplication
-import com.damianopatane.weatherapplication.app.WeatherApplication.Companion.closeRealm
 import com.damianopatane.weatherapplication.databinding.ActivityCityWeatherBinding
 import com.damianopatane.weatherapplication.domain.model.CityItem
 import com.damianopatane.weatherapplication.ui.adapters.DailyWeatherAdapter
 import com.damianopatane.weatherapplication.ui.adapters.HourlyWeatherAdapter
 import com.damianopatane.weatherapplication.ui.viewmodels.CityWeatherViewModel
 import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_city_weather.*
 import javax.inject.Inject
 
-class CityWeatherActivity : DaggerAppCompatActivity() {
+class CityWeatherActivity : BaseActivity() {
 
     private var city : CityItem? = null
 
-    private val TAG = CityWeatherViewModel::class.java.name
+    private val tag = CityWeatherViewModel::class.java.name
     private lateinit var activityCityWeatherBinding : ActivityCityWeatherBinding
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel : CityWeatherViewModel by lazy  {
+    private val viewModel : CityWeatherViewModel by lazy  {
         ViewModelProvider(this, viewModelFactory).get(CityWeatherViewModel::class.java)
     }
 
@@ -73,10 +66,5 @@ class CityWeatherActivity : DaggerAppCompatActivity() {
             viewModel.setCityItem(city!!)
             title = ""
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        closeRealm()
     }
 }

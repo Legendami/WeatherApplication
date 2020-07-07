@@ -51,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/current_temp"
-            style="@style/CityImage"/>
+            style="@style/CityImage"
+            android:contentDescription="@string/city_image" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hourly_weather_recyclerview"

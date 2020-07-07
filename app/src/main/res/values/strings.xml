@@ -2,4 +2,8 @@
     <string name="app_name">WeatherApplication</string>
     <string name="cities">Cities</string>
     <string name="file_provider_authority" translatable="false">com.damianopatane.readasset.fileprovider</string>
+    <string name="current_city_weather_icon">Current City Weather Icon</string>
+    <string name="daily_city_weather_icon">Daily City Weather Icon</string>
+    <string name="hourly_city_weather_icon">Hourly City Weather Icon</string>
+    <string name="city_image">City Image</string>
 </resources>

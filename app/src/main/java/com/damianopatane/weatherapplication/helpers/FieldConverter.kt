@@ -9,41 +9,21 @@ import java.text.DateFormat.getTimeInstance
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FieldConverter {
-    companion object {
-        private var INSTANCE: FieldConverter? = null
-        fun getInstance(): FieldConverter {
-            if (INSTANCE == null) {
-                INSTANCE = FieldConverter()
-            }
-            return INSTANCE!!
-        }
-    }
+fun Double.decimalConversion(): Double = toBigDecimal().setScale(1, RoundingMode.HALF_UP).toDouble()
 
-    fun decimalConversion(temp : Double) : Double {
-        var newTemp = temp.toBigDecimal().setScale(1, RoundingMode.HALF_UP).toDouble()
-        return newTemp
-    }
+fun Double.removeDecimalConversion() : String = String.format("%.0f", this) + "°"
 
-    fun removeDecimalConversion(temp : Double) : String {
-        var roundedTemp = String.format("%.0f", temp) + "°"
-        return roundedTemp
+fun List<Hourly?>.sortByHour() : List<Hourly?> {
+    this.forEach {
+        val date = Date(it?.dt!!.toLong() * 1000)
+        val sdf = SimpleDateFormat("HH")
+        it.dt = sdf.format(date).toInt()
     }
+    return this
+}
 
-    fun sortByHour(hours : List<Hourly>) : List<Hourly> {
-        val cal = Calendar.getInstance()
-        hours.forEach {
-            val date = Date(it.dt.toLong() * 1000)
-            val sdf = SimpleDateFormat("HH")
-            it.dt = sdf.format(date).toInt()
-        }
-        return hours
-    }
-
-    fun sortByDay(daily : Daily) : String {
-        val time = getTimeInstance(DateFormat.SHORT)
-        val cal = Calendar.getInstance()
-        cal.time = Date(daily.dt.toLong() * 1000)
-        return Day.values()[(cal.get(Calendar.DAY_OF_WEEK) - 1)].toString()
-    }
+fun Daily.sortByDay() : String {
+    val cal = Calendar.getInstance()
+    cal.time = Date(this.dt!!.toLong() * 1000)
+    return Day.values()[(cal.get(Calendar.DAY_OF_WEEK) - 1)].toString()
 }

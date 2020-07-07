@@ -6,19 +6,18 @@ import androidx.recyclerview.widget.ListAdapter
 import com.damianopatane.weatherapplication.domain.model.CityItem
 import com.damianopatane.weatherapplication.domain.model.CityWeather
 import com.damianopatane.weatherapplication.domain.model.Hourly
-import com.damianopatane.weatherapplication.helpers.FieldConverter
+import com.damianopatane.weatherapplication.helpers.sortByHour
 import com.damianopatane.weatherapplication.ui.viewholder.HourlyWeatherViewHolder
 
-
-class HourlyWeatherAdapter() : ListAdapter<List<CityItem>,
+class HourlyWeatherAdapter : ListAdapter<List<CityItem>,
         HourlyWeatherViewHolder>(HourlyWeatherDiffCallback()) {
 
-    private var items: ArrayList<Hourly> = arrayListOf()
+    private var items: ArrayList<Hourly?> = arrayListOf()
 
     fun setData(item: CityWeather?) {
         if (item?.hourly != null)
         {
-            items = ArrayList(FieldConverter.getInstance().sortByHour(item.hourly))
+            items = ArrayList(item.hourly.sortByHour())
             notifyDataSetChanged()
         }
     }
@@ -29,7 +28,7 @@ class HourlyWeatherAdapter() : ListAdapter<List<CityItem>,
 
     override fun onBindViewHolder(holderNameHourly: HourlyWeatherViewHolder, position: Int) {
         if (items.size > position) {
-            holderNameHourly.bind(items[position])
+            holderNameHourly.bind(items[position]!!)
         }
     }
 
@@ -38,13 +37,13 @@ class HourlyWeatherAdapter() : ListAdapter<List<CityItem>,
 
 class HourlyWeatherDiffCallback : DiffUtil.ItemCallback<List<CityItem>>() {
     override fun areItemsTheSame(oldItems: List<CityItem>, newItems: List<CityItem>): Boolean {
-        return oldItems[1].cityWeather.lat == newItems[1].cityWeather.lat
+        return oldItems[1].cityWeather?.lat == newItems[1].cityWeather?.lat
     }
 
     override fun areContentsTheSame(
         oldItems: List<CityItem>,
         newItems: List<CityItem>
     ): Boolean {
-        return oldItems[1].cityWeather.hourly[0].temp == newItems[1].cityWeather.hourly[0].temp
+        return oldItems[1].cityWeather!!.hourly[0]?.temp == newItems[1].cityWeather!!.hourly[0]?.temp
     }
 }

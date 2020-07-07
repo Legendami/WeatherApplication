@@ -1,11 +1,9 @@
 package com.damianopatane.weatherapplication.di.component
 
 import android.app.Application
-import android.content.Context
 import dagger.Component
 import com.damianopatane.weatherapplication.di.module.ViewModelModule
 import com.damianopatane.weatherapplication.di.module.*
-import com.damianopatane.weatherapplication.domain.repository.WeatherDataRepository
 import dagger.BindsInstance
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule

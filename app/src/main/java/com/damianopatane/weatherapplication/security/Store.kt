@@ -115,7 +115,7 @@ class Store(appContext: Context) {
         val encryptedKeyForRealm : ByteArray
         try {
             val key = ks.getEntry(KEY_ALIAS, null) as KeyStore.SecretKeyEntry
-            val secretkey = key!!.secretKey
+            val secretkey = key.secretKey
             cipher.init(Cipher.ENCRYPT_MODE, secretkey)
             encryptedKeyForRealm = cipher.doFinal(keyForRealm)
             iv = cipher.iv
@@ -157,7 +157,7 @@ class Store(appContext: Context) {
 
             return cipher.doFinal(encryptedKey)
         } catch (e : InvalidKeyException) {
-            throw RuntimeException("key is invalid.");
+            throw RuntimeException("key is invalid.")
         } catch (e : Exception ) {
             throw RuntimeException(e)
         }
