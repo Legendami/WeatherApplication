@@ -4,7 +4,7 @@ import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.ViewModel
 
-abstract class BaseObservableViewModel() : ViewModel(), Observable {
+abstract class BaseObservableViewModel : ViewModel(), Observable {
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry() }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback) {

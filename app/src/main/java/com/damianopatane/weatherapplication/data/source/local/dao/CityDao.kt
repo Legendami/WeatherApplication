@@ -1,6 +1,5 @@
 package com.damianopatane.weatherapplication.data.source.local.dao
 
-import com.damianopatane.weatherapplication.domain.model.CityWeather
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

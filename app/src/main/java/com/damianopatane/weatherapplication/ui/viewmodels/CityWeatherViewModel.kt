@@ -3,17 +3,15 @@ package com.damianopatane.weatherapplication.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import com.damianopatane.weatherapplication.domain.model.CityItem
 import com.damianopatane.weatherapplication.domain.model.CityWeather
 import com.damianopatane.weatherapplication.domain.usecase.GetCitiesUseCase
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CityWeatherViewModel @Inject constructor(private val getCities: GetCitiesUseCase) : BaseObservableViewModel() {
-    val isLoad = MediatorLiveData<Boolean>()
+    private val isLoad = MediatorLiveData<Boolean>()
     val degree = "°"
     private val cityWeather : MediatorLiveData<CityWeather> = MediatorLiveData()
     private val city : MediatorLiveData<CityItem> = MediatorLiveData()

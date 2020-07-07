@@ -39,7 +39,8 @@
                 android:layout_height="59dp"
                 android:layout_below="@+id/day_text"
                 app:imageUrl="@{icon}"
-                style="@style/CityImage"/>
+                style="@style/CityImage"
+                android:contentDescription="@string/hourly_city_weather_icon" />
             <TextView
                 android:id="@+id/time_text"
                 android:layout_width="match_parent"

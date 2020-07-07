@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/temp_image"
                 style="@style/RecyclerViewItem"
                 android:text="@{item.name}"
                 tools:text="City 1"/>
@@ -42,13 +43,16 @@
                 android:layout_height="30dp"
                 android:layout_centerInParent="true"
                 app:imageUrl="@{icon}"
-                style="@style/CityImage"/>
+                style="@style/CityImage"
+                android:contentDescription="@string/current_city_weather_icon" />
             <TextView
                 android:id="@+id/txtView_current"
                 style="@style/RecyclerViewItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/temp_image"
+                android:gravity="end"
                 android:text="@{temp}"
                 tools:text="25" />
         </RelativeLayout>

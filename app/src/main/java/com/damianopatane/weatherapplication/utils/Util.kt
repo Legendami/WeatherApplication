@@ -1,16 +1,13 @@
 package com.damianopatane.weatherapplication.utils
 
-import android.content.Context;
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.os.Build
-import android.util.Log;
-import android.widget.Toast;
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import com.damianopatane.weatherapplication.domain.model.ErrorResponse
-import com.google.gson.GsonBuilder;
+import com.google.gson.GsonBuilder
 
-import java.io.IOException;
-import okhttp3.ResponseBody;
+import java.io.IOException
+import okhttp3.ResponseBody
 
 object Util {
     fun showErrorMessage(context: Context, errorBody: ResponseBody) {
@@ -19,7 +16,7 @@ object Util {
         val errorResponse: ErrorResponse
         try {
             errorResponse =
-                gson.fromJson<ErrorResponse>(errorBody.string(), ErrorResponse::class.java!!)
+                gson.fromJson<ErrorResponse>(errorBody.string(), ErrorResponse::class.java)
             showMessage(
                 context,
                 errorResponse.message

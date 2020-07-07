@@ -28,24 +28,24 @@ class WeatherRepositoryImpl(private val database: DatabaseRealm,
 
     private val handler: Handler = Handler(Looper.getMainLooper())
     private var localDataAvailable = database.checkDataAvailable()
-    var cities : ArrayList<CityItem> = arrayListOf()
-    var citiesDao : List<CityDao> = arrayListOf()
+    private var cities : ArrayList<CityItem> = arrayListOf()
+    private var citiesDao : List<CityDao> = arrayListOf()
 
-    val getAPIKey: String = Keys.apiKey(1)
+    private val getAPIKey: String = Keys.apiKey(1)
 
     private fun receiveCityList() : ArrayList<CityItem> {
-        val cityType: Type = object : TypeToken<List<CityItem?>?>() {}.getType()
+        val cityType: Type = object : TypeToken<List<CityItem?>?>() {}.type
         return gson.fromJson(getDataFromAssets(), cityType)
     }
 
-    fun saveCityList() {
-        citiesDao = modelConverter.ConvertToCityDao(cities)
+    private fun saveCityList() {
+        citiesDao = modelConverter.convertToCityDao(cities)
         database.saveWeatherEntries(citiesDao)
     }
 
-    fun saveFullCityItem(city : CityItem) {
-        val CityDao = modelConverter.ConvertToCityDao(listOf(city))
-        database.saveWeatherEntries(CityDao)
+    private fun saveFullCityItem(city : CityItem) {
+        val cityDao = modelConverter.convertToCityDao(listOf(city))
+        database.saveWeatherEntries(cityDao)
     }
 
     override suspend fun getCurrentCityEntries() : List<CityItem> {
@@ -59,7 +59,7 @@ class WeatherRepositoryImpl(private val database: DatabaseRealm,
         }
         else if (localDataAvailable) {
             citiesDao =  database.getWeatherEntries()
-            cities =  ArrayList(modelConverter.ConvertToCityItem(citiesDao))
+            cities =  ArrayList(modelConverter.convertToCityItem(citiesDao))
         }
         if (cities.isNullOrEmpty()) {
             handler.post {showMessage(applicationContext(), NO_DATA)}
@@ -73,12 +73,12 @@ class WeatherRepositoryImpl(private val database: DatabaseRealm,
         return item
     }
 
-    suspend fun getCurrentWeatherFromServer(cityItem : CityItem): CityWeather {
-        return weatherApiService.getCurrentReport(cityItem.coord.lat, cityItem.coord.lon, getAPIKey).body() as CityWeather
+    private suspend fun getCurrentWeatherFromServer(cityItem : CityItem): CityWeather {
+        return weatherApiService.getCurrentReport(cityItem.coord?.lat!!, cityItem.coord?.lon!!, getAPIKey).body() as CityWeather
     }
 
-    suspend fun getFullWeatherFromServer(cityItem : CityItem): CityWeather {
-        return weatherApiService.getFullReport(cityItem.coord.lat, cityItem.coord.lon, getAPIKey).body() as CityWeather
+    private suspend fun getFullWeatherFromServer(cityItem : CityItem): CityWeather {
+        return weatherApiService.getFullReport(cityItem.coord?.lat!!, cityItem.coord?.lon!!, getAPIKey).body() as CityWeather
     }
 
     override fun refreshLocalData(entries: List<CityDao>) {
@@ -90,7 +90,7 @@ class WeatherRepositoryImpl(private val database: DatabaseRealm,
     }
 
     private fun getDataFromAssets(): String? {
-        var jsonString: String
+        val jsonString: String
         try {
             val assetManager: AssetManager = applicationContext().assets
             val inputStream = assetManager.open(JSON_DATA)

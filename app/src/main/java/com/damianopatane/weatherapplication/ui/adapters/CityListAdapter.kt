@@ -41,7 +41,7 @@ class CityListDiffCallback : DiffUtil.ItemCallback<List<CityItem>>() {
         oldItems: List<CityItem>,
         newItems: List<CityItem>
     ): Boolean {
-        return oldItems[1].id == newItems[1].id
+        return oldItems[1].cityWeather?.current?.temp == newItems[1].cityWeather?.current?.temp
     }
 }
 

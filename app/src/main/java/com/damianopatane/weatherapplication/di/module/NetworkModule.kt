@@ -12,6 +12,7 @@ import com.damianopatane.weatherapplication.data.source.local.DatabaseRealm
 import com.damianopatane.weatherapplication.data.source.remote.WeatherAPIService
 import com.damianopatane.weatherapplication.domain.repository.WeatherDataRepository
 import com.damianopatane.weatherapplication.data.repository.WeatherRepositoryImpl
+import com.damianopatane.weatherapplication.helpers.ModelConverter
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder
@@ -28,7 +29,7 @@ import javax.inject.Singleton
 @Module(includes = [ApplicationModule::class,
                     DatabaseModule::class])
 class NetworkModule {
-    var spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS).tlsVersions(TlsVersion.TLS_1_2)
+    private var spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS).tlsVersions(TlsVersion.TLS_1_2)
         .cipherSuites(CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)
         .build()
 
@@ -49,7 +50,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(context: Context, isNetworkAvailable:Boolean): OkHttpClient {
+    fun providesOkHttpClient(context: Context, isNetworkAvailable: Boolean): OkHttpClient {
         val cacheSize = (5 * 1024 * 1024).toLong()
         val mCache = Cache(context.cacheDir, cacheSize)
         val interceptor = HttpLoggingInterceptor()
@@ -67,17 +68,17 @@ class NetworkModule {
     @Provides
     @Singleton
     fun providesGson(): Gson {
-        return GsonBuilder()
-            .setExclusionStrategies(object : ExclusionStrategy {
-                override fun shouldSkipField(f: FieldAttributes): Boolean {
-                    return f.declaringClass == RealmObject::class.java
-                }
+    return GsonBuilder()
+        .setExclusionStrategies(object : ExclusionStrategy {
+            override fun shouldSkipField(f: FieldAttributes): Boolean {
+                return f.declaringClass == RealmObject::class.java
+            }
 
-                override fun shouldSkipClass(clazz: Class<*>?): Boolean {
-                    return false
-                }
-            })
-            .create()
+            override fun shouldSkipClass(clazz: Class<*>?): Boolean {
+                return false
+            }
+        })
+        .create()
     }
 
     @Provides
@@ -121,8 +122,8 @@ class NetworkModule {
     @Provides
     fun provideWeatherRepository(appDatabase: DatabaseRealm,
                                  retrofitService: WeatherAPIService,
-                                 isNetworkAvailable : Boolean,
-                                 modelConverter : com.damianopatane.weatherapplication.helpers.ModelConverter,
+                                 isNetworkAvailable: Boolean,
+                                 modelConverter: ModelConverter,
                                  gson : Gson): WeatherDataRepository {
         return WeatherRepositoryImpl(appDatabase, retrofitService, isNetworkAvailable, modelConverter, gson)
     }

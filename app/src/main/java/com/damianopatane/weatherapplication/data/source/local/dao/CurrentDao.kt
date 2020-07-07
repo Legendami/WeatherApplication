@@ -2,7 +2,6 @@ package com.damianopatane.weatherapplication.data.source.local.dao
 
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmList
-import io.realm.RealmModel
 import io.realm.RealmObject
 import io.realm.annotations.RealmClass
 

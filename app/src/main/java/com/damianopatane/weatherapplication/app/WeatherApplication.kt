@@ -1,25 +1,19 @@
 package com.damianopatane.weatherapplication.app
 
-import android.app.Activity
-import android.app.Application
 import android.app.KeyguardManager
 import android.content.Context
 import com.damianopatane.weatherapplication.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import com.damianopatane.weatherapplication.security.Store
 import com.damianopatane.weatherapplication.utils.Util
 import dagger.android.support.DaggerApplication
 import java.util.*
-import javax.inject.Inject
-import kotlin.properties.Delegates
 
 class WeatherApplication : DaggerApplication() {
 
-    private val TAG = WeatherApplication::class.java.name
+    private val tag = WeatherApplication::class.java.name
     lateinit var realm : Realm
 
     init {
@@ -27,7 +21,6 @@ class WeatherApplication : DaggerApplication() {
     }
 
     companion object {
-        var instance: WeatherApplication by Delegates.notNull()
         private var appInstance: WeatherApplication? = null
 
         fun applicationContext() : Context {

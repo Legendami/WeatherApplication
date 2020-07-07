@@ -32,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/temp_image"
                 style="@style/RecyclerViewItem"
                 android:text="@{weekday}"
                 tools:text="City 1"/>
@@ -41,23 +42,22 @@
                 android:layout_height="30dp"
                 android:layout_centerInParent="true"
                 app:imageUrl="@{icon}"
-                style="@style/CityImage"/>
+                style="@style/CityImage"
+                android:contentDescription="@string/daily_city_weather_icon" />
             <TextView
                 android:id="@+id/txtView_day"
                 style="@style/RecyclerViewItem"
-                android:layout_width="33dp"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_toStartOf="@+id/txtView_night"
+                android:layout_toEndOf="@id/temp_image"
+                android:gravity="end"
                 android:text="@{day}"
                 tools:text="25°" />
             <TextView
                 android:id="@+id/txtView_night"
                 style="@style/GreyRecyclerViewItem"
-                android:layout_width="33dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:gravity="end"
                 android:text="@{night}"
                 tools:text="25°" />
         </RelativeLayout>

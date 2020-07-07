@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.damianopatane.weatherapplication.app.Constants.WEAHTER_ICON_URL
 import com.damianopatane.weatherapplication.databinding.HourlyWeatherItemBinding
 import com.damianopatane.weatherapplication.domain.model.Hourly
-import com.damianopatane.weatherapplication.helpers.FieldConverter
+import com.damianopatane.weatherapplication.helpers.removeDecimalConversion
 
-class HourlyWeatherViewHolder private constructor(val binding: HourlyWeatherItemBinding)
+class HourlyWeatherViewHolder private constructor(private val binding: HourlyWeatherItemBinding)
     : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Hourly) {
-        binding.icon = WEAHTER_ICON_URL + item.weather.first().icon + "@4x.png"
-        binding.temp = FieldConverter.getInstance().removeDecimalConversion(item.temp)
+        binding.icon = WEAHTER_ICON_URL + item.weather.first()?.icon + "@4x.png"
+        binding.temp = item.temp?.removeDecimalConversion()
         binding.time = item.dt.toString()
     }
 

@@ -6,5 +6,4 @@ object Constants {
     const val ENCRYPTION_ALIAS_WEATHER_APPLICATION= "openweathermap"
     const val NO_DATA = "Please connect to the internet to get your first Weather forecasts"
     const val JSON_DATA = "eu_capitals.json"
-    const val CITIES = "Cities"
 }
